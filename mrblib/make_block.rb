@@ -7,6 +7,7 @@ class Make_block
         @mini_block=Array.new()
         @count=0
         @m_count=0
+        @address=Generate_Address.new
     end
 
     def mini_create
@@ -56,15 +57,8 @@ class Make_block
         @new_hash=Digest::MD5.hexdigest(str)
         @count+=1
       end
+
+      def connect
+        @address.genekey2
+      end
 end
-
-a=Make_block.new
-a.mini_create
-a.mini_create
-a.mini_create
-a.block_create
-
-a.mini_create
-a.mini_create
-a.mini_create
-a.block_create
