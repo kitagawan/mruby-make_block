@@ -21,43 +21,44 @@ class Make_block
         @mini_block[@m_count]=Mini_Block.new(time,data)
         @m_count=@m_count+1
     end   
-
-    def block_create
-        str_array=Array.new
-        mini_block=Array.new
-        j=0
+    
+    
+    #def block_create
+    #    str_array=Array.new
+     #   mini_block=Array.new
+      #  j=0
        #小ブロックの数だけパックする
-        while @m_count>0 do
-          @m_count-=1
-          if @mini_block[@m_count].data.class==Fixnum
+       # while @m_count>0 do
+        #  @m_count-=1
+         # if @mini_block[@m_count].data.class==Fixnum
             #通常時(温度がint型で送られてくる)
-            m_str=@mini_block[@m_count].to_a.pack("a* i*")
-          else
+          #  m_str=@mini_block[@m_count].to_a.pack("a* i*")
+         # else
             #交換時(データがサーバ側のハッシュ値で送られてくる)
-            m_str=@mini_block[@m_count].to_a.pack("a* a*")
-          j=1
-          end
+          #  m_str=@mini_block[@m_count].to_a.pack("a* a*")
+        #  j=1
+        #  end
            #一時的に配列にパック内容をプッシュ
-          str_array.push(m_str)
-        end
+         # str_array.push(m_str)
+       # end
         
-        str_array.push(@new_hash) #前ブロックのハッシュ値をプッシュ
+    #    str_array.push(@new_hash) #前ブロックのハッシュ値をプッシュ
         
-        if j==0
-        puts "ブロック生成"
-        else
-        puts "通過ブロック生成"
-        j=0
-        end
+     #   if j==0
+      #  puts "ブロック生成"
+      #  else
+      #  puts "通過ブロック生成"
+      #  j=0
+      #  end
         
-        str=str_array.pack("a* a* a* a*") #圧縮
-        mini_block=@mini_block.clone #コピーする
-        @mini_block.clear #配列を初期化
-        p @block[@count]=Block.new(@new_hash,mini_block)
-        @new_hash=Digest::MD5.hexdigest(str)
-        @count+=1
-      end
-
+     #   str=str_array.pack("a* a* a* a*") #圧縮
+     #   mini_block=@mini_block.clone #コピーする
+     #   @mini_block.clear #配列を初期化
+     #   p @block[@count]=Block.new(@new_hash,mini_block)
+     #   @new_hash=Digest::MD5.hexdigest(str)
+     #   @count+=1
+     # end
+    
       def connect
         @address.genekey2
       end
