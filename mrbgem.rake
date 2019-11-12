@@ -1,4 +1,4 @@
-MRuby::Gem::Specification.new('mruby-generate-address') do |spec|
+MRuby::Gem::Specification.new('mruby-make_block') do |spec|
   spec.license = 'MIT'
   spec.author  = 'Tetsuya'
   spec.summary = 'self-make-block'
