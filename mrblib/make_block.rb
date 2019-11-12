@@ -9,8 +9,4 @@ class Make_block
         @m_count=0
         @address=Generate_Address.new
     end
-    
-    def connect
-        @address.genekey2
-    end
 end
