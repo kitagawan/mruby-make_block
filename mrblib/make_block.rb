@@ -60,6 +60,6 @@ class Make_block
       end
      
       def connect
-        @address.genekey2
+        @address.genekey
       end
 end
