@@ -23,7 +23,7 @@ class Make_block
     end   
     
     
-    #def block_create
+    def block_create
         str_array=Array.new
         mini_block=Array.new
         j=0
