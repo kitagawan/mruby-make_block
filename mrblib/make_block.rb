@@ -1,15 +1,20 @@
 class Make_block
     def initialize
+        #初期ハッシュ値
         @new_hash="kdmehfb43ijsqwioxz49gn28ewplonfa"
+        #小ブロック
         Mini_Block= Struct.new(:time,:data)
+        #大ブロック(小ブロックが数個集まったブロック)
         Block= Struct.new(:prev_hash,:mini_block)
         @block=Array.new()
         @mini_block=Array.new()
         @count=0
         @m_count=0
+        #アドレス生成クラス
         @address=Generate_Address.new
     end
 
+    #小ブロック生成メソッド
     def mini_create
         time=Time.now
         time=time.to_s
@@ -22,7 +27,7 @@ class Make_block
         @m_count=@m_count+1
     end   
     
-    
+    #大ブロックの生成メソッド
     def block_create
         str_array=Array.new
         mini_block=Array.new
@@ -58,7 +63,9 @@ class Make_block
         @new_hash=Digest::MD5.hexdigest(str)
         @count+=1
       end
-     
+
+     #通信時に送信する匿名アドレスの部分のメソッド(他のクラスを使えるかのテスト部分)
+     #現段階では通信部分は未実装(このメソッドを内部で利用)
       def connect
         @address.genekey
       end
